@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>QML/main.qml</file>
+        <file>QML/ThemeSetting.qml</file>
+        <file>QML/TransparentWindowFrame.qml</file>
+        <file>Images/checkbox_checked.png</file>
+        <file>Images/checkbox_unchecked.png</file>
+        <file>Images/choose_color.png</file>
+        <file>Images/choose_picture.png</file>
+        <file>Images/logo.ico</file>
+        <file>Images/net_room.png</file>
+        <file>Images/logo.png</file>
+        <file>Images/server_state_green.png</file>
+        <file>Images/theme.png</file>
+        <file>Images/window_maxed.png</file>
+        <file>Images/window_maxed_hover.png</file>
+        <file>QML/WindowContent.qml</file>
+        <file>QML/WindowTool.qml</file>
+        <file>QML/MonitorManager.qml</file>
+        <file>QML/CustomCheckBox.qml</file>
+        <file>QML/CustomComboBox.qml</file>
+        <file>QML/CustomSwitchButton.qml</file>
+        <file>QML/RoomManager.qml</file>
+        <file>QML/CustomSlider.qml</file>
+    </qresource>
+</RCC>
