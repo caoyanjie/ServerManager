@@ -7,6 +7,8 @@ Item {
     property real dpScale:  1.5
     readonly property real dp: Math.max(Screen.pixelDensity * 25.4 / 160 * dpScale, 1)
 
+    signal sglSwitchMonitorClientViewport(bool onOff, string roomID)
+
     // functions
     function createNewRoom(clientGuid, clientName, roomPasswd) {
         id_roomComponent.createObject(
@@ -111,6 +113,12 @@ Item {
                 anchors { top: id_roomName.bottom; left: parent.left; right: parent.right; topMargin: 5 * dp }
                 leftText: qsTr("关闭")
                 rightText: qsTr("监控")
+                onSglRightBtnActived: {
+                    sglSwitchMonitorClientViewport(true, id_room.roomID);
+                }
+                onSglLeftBtnActived: {
+                    sglSwitchMonitorClientViewport(false, id_roomw.roomID);
+                }
             }
         }
     }

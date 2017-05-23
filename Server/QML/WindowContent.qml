@@ -58,6 +58,9 @@ Rectangle {
     RoomManager {
         id: id_roomManager
         anchors { left: id_consoleMsgContainer.right; right: parent.right; top: id_windowTool.bottom; bottom: id_monitorManager.top; margins: id_windowContent.margin }
+        onSglSwitchMonitorClientViewport: {
+            id_udpTransmission.setClientViewportState(onOff, roomID, 0);
+        }
     }
 
     // monitor manager

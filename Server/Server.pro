@@ -57,7 +57,9 @@ HEADERS += \
     SystemPath.h \
     UdpTransmission.h \
     WriteLog.h \
-    NATPunchthroghFacilitator.h
+    NATPunchthroghFacilitator.h \
+    ImageProvider.h \
+    ImageTransfer.h
 
 SOURCES += main.cpp \
     DataProcess.cpp \
@@ -66,7 +68,9 @@ SOURCES += main.cpp \
     SystemPath.cpp \
     UdpTransmission.cpp \
     WriteLog.cpp \
-    NATPunchthroghFacilitator.cpp
+    NATPunchthroghFacilitator.cpp \
+    ImageProvider.cpp \
+    ImageTransfer.cpp
 
 RESOURCES += qml.qrc
 

@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
+import QtCPlusPlus.ImageTransfer 2.0
 
 Item {
     id: id_monitorManager
@@ -8,8 +9,11 @@ Item {
     readonly property real dp: Math.max(Screen.pixelDensity * 25.4 / 160 * dpScale, 1)
 
     // functions
-    function showClientViewport(roomID, clientGuid, imgData, imgWidth, imgHeight, imgFormat) {
-
+    property int count: 0
+    function showClientViewport(roomID, clientGuid, image, imgWidth, imgHeight, imgFormat) {
+        count += 1;
+        id_imageTransfer.setImage(image);
+        id_image.source = "image://ImageProvider/net" + count;
     }
 
     Rectangle {
@@ -56,5 +60,14 @@ Item {
         anchors { left: parent.left; right: parent.right; top: id_monitorTools.bottom; bottom: parent.bottom; topMargin: 5 * dp }
         color: "transparent"
         border { width: 1; color: Qt.rgba(0, 0.5, 0.8, 1) }
+
+        Image {
+            id: id_image
+            anchors { centerIn: parent }
+        }
+
+        ImageTransfer {
+            id: id_imageTransfer
+        }
     }
 }

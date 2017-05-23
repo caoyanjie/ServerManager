@@ -127,7 +127,7 @@ void RakNetServer::UdpTransmission::test()
 	std::cout << result.substr(1, result.find_last_of("}")-1) << std::endl;
 } //}}}
 
-void RakNetServer::UdpTransmission::setClientViewportState(bool state, const char* clientGuid, int level)
+void RakNetServer::UdpTransmission::setClientViewportState(bool state, QString clientGuid, int level)
 {
 // 	RakNet::BitStream bitStream;
 // 	bitStream.Write(SWITCH_CLIENTVIEWPORT);
@@ -163,7 +163,7 @@ void RakNetServer::UdpTransmission::setClientViewportState(bool state, const cha
 	std::string stateStr = state ? "true" : "false";
 	std::ostringstream msg;
 	msg << "{\"state\":\"" << stateStr << "\",\"width\":" << width << ",\"height\":" << height << "}";
-	sendData(m_dataProcess->getClientGuidFromGuidString(clientGuid), SWITCH_CLIENT_VIEWPORT, false, msg.str().c_str());
+    sendData(m_dataProcess->getClientGuidFromGuidString(clientGuid.toStdString().c_str()), SWITCH_CLIENT_VIEWPORT, false, msg.str().c_str());
 }
 
 void RakNetServer::UdpTransmission::changeMonitorQuility(const char* clientGuid, int level)
@@ -645,9 +645,8 @@ void RakNetServer::UdpTransmission::showClientViewport(RakNet::Packet * packet)
 	}
 	//stream.Read(imgData);
 
-	//QString roomID = dataProcess->getRoomIDFromClientGuid(packet->guid).c_str();
-	//emit sglShowClientViewport(roomID, packet->guid.ToString(), imgData, imgWidth, imgHeight, imgFormat.C_String());
-	emit sglShowClientViewport(roomID.C_String(), clientID.C_String(), imgData, imgWidth, imgHeight, imgFormat.C_String());
+    QImage image(imgData, imgWidth, imgHeight, QImage::Format::Format_RGB888);
+    emit sglShowClientViewport(roomID.C_String(), clientID.C_String(), image, imgWidth, imgHeight, imgFormat.C_String());
 }
 
 void RakNetServer::UdpTransmission::print(const char* str)

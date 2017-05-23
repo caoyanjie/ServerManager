@@ -15,6 +15,7 @@
 #include <atomic>
 
 #include <QObject>
+#include <QImage>
 
 namespace RakNet {
 	//{{{
@@ -36,7 +37,7 @@ namespace RakNetServer {
         // void start();
         // void close();
 		void test();
-		void setClientViewportState(bool state, const char* clientGuid, int level = 0);
+        // void setClientViewportState(bool state, const char* clientGuid, int level = 0);
 		void changeMonitorQuility(const char* clientGuid, int level);
 		//}}}
 
@@ -98,12 +99,13 @@ namespace RakNetServer {
         void sglCreateNewRoom(QString clientGuid, QString clientName, QString roomPasswd);
 		void sglJoinRoom(QString roomID, QString clientGuid, QString clientName);
 		void sglLeaveRoom(QString roomID, QString clientGuid, QString clientName);
-		void sglShowClientViewport(QString roomID, QString clientGuid, unsigned char* imgData, int imgWidth, int imgHeight, QString imgFormat);
+        void sglShowClientViewport(QString roomID, QString clientGuid, QImage image, int imgWidth, int imgHeight, QString imgFormat);
 		void sglUpdateUsername(QString roomID, QString clientGuid, QString newUsername);
 		//}}}
 
     public slots:
         void start();
         void close();
+        void setClientViewportState(bool state, QString clientGuid, int level);
     };
 }
